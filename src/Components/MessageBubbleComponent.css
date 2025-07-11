@@ -1,0 +1,106 @@
+.intro-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 600px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 80px;
+    height: 90px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+    overflow: hidden;
+    border: 3px solid #222;
+}
+
+.avatar:hover .avatar-img {
+    transform: scale(1.05);
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.hi-icon {
+    position: absolute;
+    bottom: -10px;
+    left: -20px;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 38px;
+    transform: translateY(0);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.avatar-wrapper:hover .hi-icon {
+    opacity: 1;
+    animation: wave 1s infinite ease-in-out;
+}
+
+@keyframes wave {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    20% {
+        transform: translateY(-2px) rotate(15deg);
+    }
+
+    40% {
+        transform: translateY(0) rotate(-10deg);
+    }
+
+    60% {
+        transform: translateY(-2px) rotate(10deg);
+    }
+
+    80% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.message-wrapper {
+    position: relative;
+}
+
+.message-bubble {
+    background: #f97028;
+    padding: 10px 10px;
+    border-radius: 16px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    max-width: 420px;
+    position: relative;
+}
+
+.bubble-tail {
+    position: absolute;
+    left: -8px;
+    bottom: -7px;
+}
+
+.bubble-tail svg path:first-child {
+    fill: #f97028;
+}
+
+.bubble-tail svg path:last-child {
+    stroke: #222;
+}
