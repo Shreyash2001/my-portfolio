@@ -12,6 +12,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import "./ConnectDrawer.css";
+import ContactForm from "./ContactForm";
 
 const ConnectDrawer = ({ open, onClose }) => {
   const [tabValue, setTabValue] = useState(0);
@@ -119,71 +120,7 @@ const ConnectDrawer = ({ open, onClose }) => {
             </Box>
           </Box>
         )}
-        {tabValue === 1 && (
-          <Box sx={{ p: 3 }}>
-            <form
-              style={{ display: "flex", flexDirection: "column", gap: "16px" }}
-            >
-              <TextField
-                label="Name"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{ style: { color: "white" } }}
-                InputProps={{
-                  style: { color: "white", borderColor: "#f0bb0d" },
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": { borderColor: "#f0bb0d" },
-                    "&:hover fieldset": { borderColor: "#f489a3" },
-                  },
-                }}
-              />
-              <TextField
-                label="Email"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{ style: { color: "white" } }}
-                InputProps={{
-                  style: { color: "white", borderColor: "#f0bb0d" },
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": { borderColor: "#f0bb0d" },
-                    "&:hover fieldset": { borderColor: "#f489a3" },
-                  },
-                }}
-              />
-              <TextField
-                label="Message"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={4}
-                InputLabelProps={{ style: { color: "white" } }}
-                InputProps={{
-                  style: { color: "white", borderColor: "#f0bb0d" },
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": { borderColor: "#f0bb0d" },
-                    "&:hover fieldset": { borderColor: "#f489a3" },
-                  },
-                }}
-              />
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: "#f97028",
-                  color: "white",
-                  "&:hover": { bgcolor: "#f489a3" },
-                }}
-              >
-                Submit
-              </Button>
-            </form>
-          </Box>
-        )}
+        {tabValue === 1 && <ContactForm />}
       </Box>
     </Drawer>
   );
