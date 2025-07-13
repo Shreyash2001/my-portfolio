@@ -35,18 +35,18 @@ const ConnectDrawer = ({ open, onClose }) => {
       >
         <Box sx={{ display: "flex", gap: 2, mb: 2, justifyContent: "center" }}>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/shreyash-katare-90a419172/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <LinkedInIcon sx={{ color: "white", fontSize: 40 }} />
+            <LinkedInIcon sx={{ color: "#f97028", fontSize: 40 }} />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/Shreyash2001"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GitHubIcon sx={{ color: "white", fontSize: 40 }} />
+            <GitHubIcon sx={{ color: "#f97028", fontSize: 40 }} />
           </a>
         </Box>
         <Tabs

@@ -4,6 +4,7 @@ import MessageBubbleComponent from "../Components/MessageBubbleComponent";
 import ConnectButton from "../Components/ConnectButton";
 import "./HomeScreen.css";
 import ConnectDrawer from "../Components/ConnectDrawer";
+import ShuffleCard from "../Components/ShuffleCard";
 
 function HomeScreen() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
@@ -33,6 +34,7 @@ function HomeScreen() {
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       />
+      <ShuffleCard />
       <CurvedLines showLeft={true} />
     </div>
   );
