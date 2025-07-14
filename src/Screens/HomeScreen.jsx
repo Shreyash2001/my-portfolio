@@ -5,6 +5,7 @@ import ConnectButton from "../Components/ConnectButton";
 import "./HomeScreen.css";
 import ConnectDrawer from "../Components/ConnectDrawer";
 import ShuffleCard from "../Components/ShuffleCard";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function HomeScreen() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
@@ -26,6 +27,8 @@ function HomeScreen() {
       <MessageBubbleComponent />
       {getTitleAndSubtitle()}
       <ConnectButton
+        label="Let's Connect"
+        Icon={ArrowForwardIcon}
         onClick={() => {
           setIsDrawerOpen(true);
         }}

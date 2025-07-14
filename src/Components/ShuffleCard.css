@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
+    cursor: default;
+    /* Prevent grab cursor on surrounding container */
 }
 
 .card-container {
@@ -11,6 +13,8 @@
     height: 400px;
     margin: 0 auto;
     perspective: 1000px;
+    cursor: default;
+    /* Prevent grab cursor in empty spaces around cards */
 }
 
 .card {
@@ -30,11 +34,19 @@
     transition: transform 0.5s ease, opacity 0.5s ease;
     user-select: none;
     cursor: grab;
+    /* Grab cursor only on interactive cards */
 }
 
 .card.dragging {
     cursor: grabbing;
     transition: none;
+    z-index: 1000;
+    /* Optional: Bring dragging card to front */
+}
+
+/* Optional: Explicitly set default cursor for non-top cards if needed */
+.card:not(:first-child) {
+    cursor: default;
 }
 
 .shuffle-button {
@@ -51,4 +63,13 @@
 
 .shuffle-button:hover {
     background-color: #45a049;
+}
+
+/* Add this to your existing CSS */
+.card.sliding-out {
+    transition: transform 0.5s ease;
+    opacity: 1;
+    /* Keep visible during animation for a natural slide */
+    z-index: 1000;
+    /* Bring to front during shuffle */
 }
