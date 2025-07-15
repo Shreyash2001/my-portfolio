@@ -12,12 +12,11 @@
 .rainbow-right {
     position: absolute;
     right: 0;
-    height: 100%;
 }
 
 .rainbow-left {
     position: absolute;
     left: 0;
-    height: 100%;
+    top: 30vh;
     transform: scale(-1);
 }

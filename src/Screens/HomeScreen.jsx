@@ -6,6 +6,9 @@ import "./HomeScreen.css";
 import ConnectDrawer from "../Components/ConnectDrawer";
 import ShuffleCard from "../Components/ShuffleCard";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import TechCarousel from "../Components/TechCarousel";
+import { technologies } from "../utils/technology_data";
+import StraightLines from "../Components/StraightLines.jsx";
 
 function HomeScreen() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
@@ -24,21 +27,27 @@ function HomeScreen() {
   return (
     <div>
       <CurvedLines showRight={true} />
-      <MessageBubbleComponent />
-      {getTitleAndSubtitle()}
-      <ConnectButton
-        label="Let's Connect"
-        Icon={ArrowForwardIcon}
-        onClick={() => {
-          setIsDrawerOpen(true);
-        }}
-      />
-      <ConnectDrawer
-        open={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
-      />
-      <ShuffleCard />
+      <div className="home_middle_container">
+        <MessageBubbleComponent />
+        {getTitleAndSubtitle()}
+        <ConnectButton
+          label="Let's Connect"
+          Icon={ArrowForwardIcon}
+          onClick={() => {
+            setIsDrawerOpen(true);
+          }}
+        />
+        <StraightLines />
+        <ConnectDrawer
+          open={isDrawerOpen}
+          onClose={() => setIsDrawerOpen(false)}
+        />
+        <ShuffleCard />
+      </div>
       <CurvedLines showLeft={true} />
+      <div style={{ maxWidth: "100%" }}>
+        <TechCarousel logos={technologies} />
+      </div>
     </div>
   );
 }

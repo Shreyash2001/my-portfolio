@@ -1,0 +1,71 @@
+.carousel-container {
+    width: 98.8vw;
+    height: 5vh;
+    background: #f3a20f;
+    overflow: hidden;
+    padding: 60px 0;
+    white-space: nowrap;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 2px solid #222;
+}
+
+.carousel-container::before,
+.carousel-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+}
+
+.carousel-container::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), #f3a20f);
+}
+
+.carousel-container::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #f3a20f);
+}
+
+.carousel-container:hover .carousel-slide {
+    animation-play-state: paused;
+}
+
+.carousel-slide {
+    display: inline-block;
+    animation: 20s slide infinite linear;
+}
+
+.carousel-item {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 40px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.carousel-icon {
+    width: 68px;
+    height: 68px;
+    margin-right: 10px;
+}
+
+.carousel-text {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
