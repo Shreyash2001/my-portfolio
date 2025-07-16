@@ -7,38 +7,52 @@ gsap.registerPlugin(ScrollTrigger);
 
 const StraightLines = () => {
   useEffect(() => {
-    // Animate straight SVG paths
-    gsap.utils
-      .toArray(".rainbow-vertical .rainbow-path")
-      .forEach((path, index) => {
-        const dashArrays = [
-          208.282, 132.187, 49.3416, 0, 0, 0, 0, 0, 0, 208.282, 132.187,
-          49.3416, 0, 0, 0, 0, 0, 0,
-        ];
-        const totalLength = dashArrays[index];
-        gsap.set(path, { strokeDasharray: `${totalLength}, 999999` });
-        gsap.to(path, {
-          scrollTrigger: {
-            trigger: ".rainbow-vertical",
-            start: "top center",
-            end: "bottom center",
-            scrub: true,
-          },
-          strokeDasharray: `0, ${totalLength + 999999}`,
-          ease: "none",
-        });
+    // Select all paths to animate
+    const paths = gsap.utils.toArray(".ranbow-vertical__1-svg .rainbow-path");
+
+    paths.forEach((path) => {
+      const totalLength = path.getTotalLength(); // Get the actual length of the path
+
+      // Set the initial state: path is fully "dashed" but offset out of view
+      gsap.set(path, {
+        strokeDasharray: totalLength,
+        strokeDashoffset: totalLength,
       });
+
+      // Animate the path into view on scroll
+      gsap.to(path, {
+        strokeDashoffset: 0, // Animate the offset to 0 to "draw" the line
+        ease: "none", // Linear easing for a direct link to scroll speed
+        scrollTrigger: {
+          trigger: ".ranbow-vertical__1-svg",
+          start: "top bottom", // Start when the SVG's top enters the viewport's bottom
+          end: "bottom center", // End when the SVG's bottom reaches the viewport's center
+          scrub: true, // Make the animation follow the scrollbar
+        },
+      });
+    });
+
+    // It's a good practice to refresh ScrollTrigger after setup
+    // in case of layout shifts after the component mounts.
+    const refreshTimeout = setTimeout(() => ScrollTrigger.refresh(), 100);
+
+    // Cleanup function to kill triggers and clear timeouts when the component unmounts
+    return () => {
+      clearTimeout(refreshTimeout);
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
     <div className="straight-lines">
+      {/* The SVG structure remains the same */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         viewBox="0 0 452 600"
         fill="none"
         preserveAspectRatio="none"
-        className="rainbow-vertical"
+        className="ranbow-vertical__1-svg"
       >
         <path
           d="M426 0V600"

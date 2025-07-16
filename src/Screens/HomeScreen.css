@@ -48,3 +48,8 @@
     margin-top: 20px;
     width: 99vw;
 }
+
+.straight_lines_container {
+    /* position: absolute; */
+    width: 100%;
+}

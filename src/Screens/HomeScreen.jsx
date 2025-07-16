@@ -37,12 +37,17 @@ function HomeScreen() {
             setIsDrawerOpen(true);
           }}
         />
-        <StraightLines />
+
         <ConnectDrawer
           open={isDrawerOpen}
           onClose={() => setIsDrawerOpen(false)}
         />
-        <ShuffleCard />
+        <div style={{ position: "relative" }}>
+          <div className="straight_lines_container">
+            <StraightLines />
+          </div>
+          <ShuffleCard />
+        </div>
       </div>
       <CurvedLines showLeft={true} />
       <div style={{ maxWidth: "100%" }}>
