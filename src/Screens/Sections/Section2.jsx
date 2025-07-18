@@ -4,7 +4,7 @@ import ConnectButton from "../../Components/ConnectButton";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { gsap } from "gsap";
 
-const FloatingImage = ({ src, alt, className }) => {
+const FloatingImage = ({ src, alt, className, animationPath }) => {
   const imgRef = useRef(null);
   const borderColor = Math.random() > 0.5 ? "#f3a20f" : "#ff4d4f";
 
@@ -12,12 +12,12 @@ const FloatingImage = ({ src, alt, className }) => {
     const img = imgRef.current;
     const tl = gsap.timeline({ repeat: -1, yoyo: true });
 
-    // Random floating animation within container
+    // Controlled floating animation with predefined path
     tl.to(img, {
-      x: () => gsap.utils.random(-15, 15),
-      y: () => gsap.utils.random(-15, 15),
-      rotation: () => gsap.utils.random(-3, 3),
-      duration: gsap.utils.random(2, 4),
+      x: animationPath.x,
+      y: animationPath.y,
+      rotation: animationPath.rotation,
+      duration: animationPath.duration,
       ease: "sine.inOut",
     });
 
@@ -38,7 +38,7 @@ const FloatingImage = ({ src, alt, className }) => {
       img.removeEventListener("mouseenter", () => {});
       img.removeEventListener("mouseleave", () => {});
     };
-  }, []);
+  }, [animationPath]);
 
   return (
     <img
@@ -54,10 +54,22 @@ const FloatingImage = ({ src, alt, className }) => {
 function Section2() {
   // Placeholder image URLs (replace with actual image paths)
   const images = [
-    "https://via.placeholder.com/80",
-    "https://via.placeholder.com/80",
-    "https://via.placeholder.com/80",
-    "https://via.placeholder.com/80",
+    "https://via.placeholder.com/100",
+    "https://via.placeholder.com/100",
+    "https://via.placeholder.com/100",
+    "https://via.placeholder.com/100",
+    "https://via.placeholder.com/100",
+    "https://via.placeholder.com/100",
+  ];
+
+  // Define distinct animation paths for each image to prevent overlap
+  const animationPaths = [
+    { x: 15, y: -20, rotation: 2, duration: 3 }, // img1 (left, top)
+    { x: -20, y: 20, rotation: -3, duration: 3.5 }, // img2 (left, middle)
+    { x: 20, y: 50, rotation: 3, duration: 4 }, // img3 (left, bottom)
+    { x: -15, y: -20, rotation: -2, duration: 3 }, // img4 (right, top)
+    { x: 20, y: 20, rotation: 3, duration: 3.5 }, // img5 (right, middle)
+    { x: -20, y: 60, rotation: -3, duration: 4 }, // img6 (right, bottom)
   ];
 
   return (
@@ -67,11 +79,19 @@ function Section2() {
           src={images[0]}
           alt="Floating tech 1"
           className="floating-img img1"
+          animationPath={animationPaths[0]}
         />
         <FloatingImage
           src={images[1]}
           alt="Floating tech 2"
           className="floating-img img2"
+          animationPath={animationPaths[1]}
+        />
+        <FloatingImage
+          src={images[2]}
+          alt="Floating tech 3"
+          className="floating-img img3"
+          animationPath={animationPaths[2]}
         />
       </div>
       <div className="content-wrapper">
@@ -100,14 +120,22 @@ function Section2() {
       </div>
       <div className="floating-images right">
         <FloatingImage
-          src={images[2]}
-          alt="Floating tech 3"
-          className="floating-img img3"
-        />
-        <FloatingImage
           src={images[3]}
           alt="Floating tech 4"
           className="floating-img img4"
+          animationPath={animationPaths[3]}
+        />
+        <FloatingImage
+          src={images[4]}
+          alt="Floating tech 5"
+          className="floating-img img5"
+          animationPath={animationPaths[4]}
+        />
+        <FloatingImage
+          src={images[5]}
+          alt="Floating tech 6"
+          className="floating-img img6"
+          animationPath={animationPaths[5]}
         />
       </div>
     </div>
