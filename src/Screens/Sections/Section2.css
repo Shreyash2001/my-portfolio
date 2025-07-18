@@ -1,0 +1,94 @@
+.tech-passion-container {
+    border: 2px solid blue;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 300px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.tech-passion-title {
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-size: 3rem;
+}
+
+.highlight-text {
+    background-color: #f3a20f;
+    padding: 2px 8px;
+    display: inline-block;
+    transform: rotate(-2deg);
+    text-shadow:
+        1px 1px 0 #fff,
+        2px 2px 0 #fff,
+        3px 3px 0 #fff,
+        4px 4px 0 #333,
+        5px 5px 0 #222;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    -webkit-text-fill-color: transparent;
+}
+
+.tech-passion-title::selection {
+    background-color: #333;
+    color: #fff;
+}
+
+.tech-passion-description {
+    text-align: center;
+    max-width: 400px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.floating-images {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.floating-images.left {
+    left: 20px;
+    top: 20px;
+}
+
+.floating-images.right {
+    right: 20px;
+    top: 20px;
+}
+
+.floating-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.floating-img.img1 {
+    transform: translate(0, 0);
+}
+
+.floating-img.img2 {
+    transform: translate(20px, 40px);
+}
+
+.floating-img.img3 {
+    transform: translate(0, 0);
+}
+
+.floating-img.img4 {
+    transform: translate(-20px, 40px);
+}

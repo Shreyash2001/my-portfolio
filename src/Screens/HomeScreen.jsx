@@ -8,7 +8,7 @@ import ShuffleCard from "../Components/ShuffleCard";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import TechCarousel from "../Components/TechCarousel";
 import { technologies } from "../utils/technology_data";
-import StraightLines from "../Components/StraightLines.jsx";
+import Section2 from "./Sections/Section2";
 
 function HomeScreen() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
@@ -43,15 +43,15 @@ function HomeScreen() {
           onClose={() => setIsDrawerOpen(false)}
         />
         <div style={{ position: "relative" }}>
-          <div className="straight_lines_container">
-            <StraightLines />
-          </div>
           <ShuffleCard />
         </div>
       </div>
       <CurvedLines showLeft={true} />
       <div style={{ maxWidth: "100%" }}>
         <TechCarousel logos={technologies} />
+      </div>
+      <div style={{ backgroundColor: "#222", padding: "20px 40px" }}>
+        <Section2 />
       </div>
     </div>
   );
