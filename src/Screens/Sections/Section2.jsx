@@ -6,7 +6,6 @@ import { gsap } from "gsap";
 
 const FloatingImage = ({ src, alt, className, animationPath }) => {
   const imgRef = useRef(null);
-  const borderColor = Math.random() > 0.5 ? "#f3a20f" : "#ff4d4f";
 
   useEffect(() => {
     const img = imgRef.current;
@@ -21,22 +20,37 @@ const FloatingImage = ({ src, alt, className, animationPath }) => {
       ease: "sine.inOut",
     });
 
-    // Pause animation and scale on hover
-    img.addEventListener("mouseenter", () => {
+    // Handle hover effect
+    const handleMouseEnter = () => {
       tl.pause();
-      gsap.to(img, { scale: 1.2, duration: 0.3 });
-    });
+      gsap.to(img, {
+        scale: 1.2,
+        duration: 0.4, // Slightly longer duration for smoother scaling
+        ease: "power2.inOut", // Smoother easing for scaling
+      });
+    };
 
-    // Resume animation and reset scale on mouse leave
-    img.addEventListener("mouseleave", () => {
-      tl.resume();
-      gsap.to(img, { scale: 1, duration: 0.3 });
-    });
+    // Handle mouse leave
+    const handleMouseLeave = () => {
+      gsap.to(img, {
+        scale: 1,
+        duration: 0.4, // Match duration for consistency
+        ease: "power2.inOut", // Smoother easing for scaling
+        onComplete: () => {
+          tl.resume(); // Resume animation after scaling back
+        },
+      });
+    };
 
+    // Add event listeners
+    img.addEventListener("mouseenter", handleMouseEnter);
+    img.addEventListener("mouseleave", handleMouseLeave);
+
+    // Cleanup
     return () => {
-      tl.kill();
-      img.removeEventListener("mouseenter", () => {});
-      img.removeEventListener("mouseleave", () => {});
+      tl.kill(); // Kill the GSAP timeline
+      img.removeEventListener("mouseenter", handleMouseEnter);
+      img.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [animationPath]);
 
@@ -46,7 +60,7 @@ const FloatingImage = ({ src, alt, className, animationPath }) => {
       src={src}
       alt={alt}
       className={className}
-      style={{ border: `2px solid ${borderColor}` }}
+      style={{ border: `4px solid #fff` }}
     />
   );
 };
@@ -54,17 +68,17 @@ const FloatingImage = ({ src, alt, className, animationPath }) => {
 function Section2() {
   // Placeholder image URLs (replace with actual image paths)
   const images = [
-    "https://via.placeholder.com/100",
-    "https://via.placeholder.com/100",
-    "https://via.placeholder.com/100",
-    "https://via.placeholder.com/100",
-    "https://via.placeholder.com/100",
-    "https://via.placeholder.com/100",
+    "./public/assets/reactjs_image.png",
+    "./public/assets/nodejs_image.png",
+    "./public/assets/angular_image.png",
+    "./public/assets/java_image.jpg",
+    "./public/assets/springboot_image.png",
+    "./public/assets/flutter_image.jpg",
   ];
 
   // Define distinct animation paths for each image to prevent overlap
   const animationPaths = [
-    { x: 15, y: -20, rotation: 2, duration: 3 }, // img1 (left, top)
+    { x: 15, y: -10, rotation: 2, duration: 3 }, // img1 (left, top)
     { x: -20, y: 20, rotation: -3, duration: 3.5 }, // img2 (left, middle)
     { x: 20, y: 50, rotation: 3, duration: 4 }, // img3 (left, bottom)
     { x: -15, y: -20, rotation: -2, duration: 3 }, // img4 (right, top)

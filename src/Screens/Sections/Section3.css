@@ -1,0 +1,32 @@
+.bordered-section {
+    border-left: 2px solid #333;
+    border-right: 2px solid #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.highlight {
+    padding: 2px 8px;
+    display: inline-block;
+    text-shadow:
+        1px 1px 0 #fff,
+        2px 2px 0 #fff,
+        3px 3px 0 #fff,
+        4px 4px 0 #333,
+        5px 5px 0 #222;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    -webkit-text-fill-color: transparent;
+}
+
+.speaker {
+    background-color: #f3a20f;
+    /* Orange for Speaker */
+    transform: rotate(-2deg);
+}
+
+.lineup {
+    background-color: #0f8af3;
+    /* Blue for Lineup */
+    transform: rotate(2deg);
+}

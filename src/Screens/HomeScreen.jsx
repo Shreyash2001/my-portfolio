@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import TechCarousel from "../Components/TechCarousel";
 import { technologies } from "../utils/technology_data";
 import Section2 from "./Sections/Section2";
+import Section3 from "./Sections/Section3";
 
 function HomeScreen() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
@@ -50,8 +51,11 @@ function HomeScreen() {
       <div style={{ maxWidth: "100%" }}>
         <TechCarousel logos={technologies} />
       </div>
-      <div style={{ backgroundColor: "#222", padding: "20px 40px" }}>
+      <div style={{ backgroundColor: "black", padding: "20px 40px" }}>
         <Section2 />
+      </div>
+      <div>
+        <Section3 />
       </div>
     </div>
   );
